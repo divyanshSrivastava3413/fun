@@ -1,4 +1,10 @@
 import { useState } from "react";
+interface permElement {
+  id: number;
+  pageName: string;
+  permissionIds: number[];
+}
+
 const permData = [
   { id: 1, pageName: "Dashboard", permissionIds: [1, 2] },
   { id: 2, pageName: "About", permissionIds: [1, 2, 3] },
@@ -11,11 +17,33 @@ const permData = [
 
 const permissions = [1, 2, 3];
 const Permissions = () => {
-  const [check, setCheck] = useState(false);
-  const permClone = structuredClone(permData);
-  permClone[0].pageName = "changed";
-  console.log(permClone);
-  console.log("Perm: ", permData);
+  const [permClone, setPermClone] = useState(
+    JSON.parse(JSON.stringify(permData))
+  );
+
+  const handleCheckboxChange = (
+    pageId: number,
+    permId: number,
+    checked: boolean
+  ) => {
+    setPermClone((prev: any) =>
+      prev.map((p: permElement) => {
+        if (p.id === pageId) {
+          return {
+            ...p,
+            permissionIds: checked
+              ? [...p.permissionIds, permId]
+              : p.permissionIds.filter((f) => f !== permId),
+          };
+        }
+        return p;
+      })
+    );
+  };
+
+  const handleSave = () => {
+    console.log(permClone);
+  };
 
   return (
     <div className="w-full font-mono">
@@ -31,7 +59,7 @@ const Permissions = () => {
             </tr>
           </thead>
           <tbody>
-            {permData.map((p) => (
+            {permClone.map((p: permElement) => (
               <tr
                 className="odd:bg-gray-100 even:bg-white hover:bg-gray-200"
                 key={p.id}
@@ -43,8 +71,10 @@ const Permissions = () => {
                       <input
                         type="checkbox"
                         className="cursor-pointer w-4 h-4 accent-blue-500"
-                        checked={check}
-                        onChange={() => setCheck(!check)}
+                        checked={p.permissionIds.includes(perm)}
+                        onChange={(e) =>
+                          handleCheckboxChange(p.id, perm, e.target.checked)
+                        }
                       />
                     </div>
                   </td>
@@ -53,7 +83,12 @@ const Permissions = () => {
             ))}
           </tbody>
         </table>
-        <button className="px-4 py-2 text-white bg-gray-900 hover:bg-black cursor-pointer">
+      </div>
+      <div className="flex justify-end items-center my-2">
+        <button
+          className="px-4 py-2 text-white bg-gray-900 hover:bg-black cursor-pointer"
+          onClick={handleSave}
+        >
           Save changes
         </button>
       </div>

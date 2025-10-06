@@ -3,7 +3,7 @@ import { useGetTodosQuery } from "../../appStore/api/api";
 import { Search } from "lucide-react";
 const TodoList = () => {
   const { data: todosData, isLoading, isError } = useGetTodosQuery();
-  console.log("TodosData: ", todosData);
+  // console.log("TodosData: ", todosData);
   const todosList = todosData?.todos ?? [];
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredList, setFilteredList] = useState([]);
