@@ -83,7 +83,6 @@ const Posts = () => {
       prev.map((post: PostElem) => {
         if (post.id === postId) {
           const maxId = Math.max(0, ...post.comments.map((c) => c.id));
-
           console.log(maxId);
           return {
             ...post,
@@ -182,7 +181,7 @@ const Posts = () => {
                       Comments:
                     </p>
                     <button
-                      className="px-2 py-1 cursor-pointer flex justify-center items-center gap-1 text-sm border-2 border-gray-900 rounded-md"
+                      className="px-2 py-1 cursor-pointer flex justify-center items-center gap-1 text-sm border-2 border-gray-900 rounded-md hover:bg-gray-100"
                       onClick={() => setAddCom(post.id)}
                     >
                       <PlusCircle size={22} /> Add Comment
@@ -208,7 +207,7 @@ const Posts = () => {
                               className="w-max border-2 border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:border-transparent focus:ring-yellow-600 px-2 py-1"
                               type="text"
                               placeholder="Enter comment"
-                              value={editedCom}
+                              value={!editedCom ? com.text : editedCom}
                               autoFocus
                               onChange={(e) => setEditedCom(e.target.value)}
                             />
