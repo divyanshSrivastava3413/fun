@@ -11,6 +11,7 @@ import type { RootState } from "./appStore/store";
 import TodoList from "./Components/fun/TodoList";
 import Permissions from "./Components/fun/Permissions";
 import InventoryTable from "./Components/fun/InventoryTable";
+import Posts from "./Components/fun/Posts";
 
 function App() {
   const [num, setNum] = useState(0);
@@ -74,6 +75,7 @@ function App() {
       <TodoList />
       <Permissions />
       <InventoryTable />
+      <Posts />
     </>
   );
 }

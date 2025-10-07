@@ -1,4 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 @import "tailwindcss";
+/* Tailwind custom utility */
+@layer utilities {
+  .fun {
+    @apply font-sans; /* fallback */
+    font-family: 'Fredoka', sans-serif;
+  }
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
