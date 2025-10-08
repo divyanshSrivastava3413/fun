@@ -46,7 +46,7 @@ const Permissions = () => {
   };
 
   return (
-    <div className="w-full font-mono">
+    <div className="w-full font-mono px-4">
       <h1 className="text-xl mb-2">Permissions Table</h1>
       <div className="border-2 border-gray rounded-md overflow-hidden">
         <table className="w-full border-collapse">

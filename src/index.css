@@ -7,6 +7,24 @@
     font-family: 'Fredoka', sans-serif;
   }
 }
+/* in your CSS file */
+.scrollbar-custom::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #1f2937; /* gray-900 */
+  border-radius: 9999px; /* fully rounded */
+  cursor: pointer;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  margin-top: 4px;
+  margin-bottom: 1px;
+  background-color: #f3f4f6; /* gray-100 */
+  border-radius: 25%;
+}
+
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;

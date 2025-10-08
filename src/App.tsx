@@ -12,6 +12,7 @@ import TodoList from "./Components/fun/TodoList";
 import Permissions from "./Components/fun/Permissions";
 import InventoryTable from "./Components/fun/InventoryTable";
 import Posts from "./Components/fun/Posts";
+import StudentTable from "./Components/fun/StudentTable";
 
 function App() {
   const [num, setNum] = useState(0);
@@ -72,10 +73,13 @@ function App() {
           </span>
         </span>
       </div>
-      <TodoList />
-      <Permissions />
-      <InventoryTable />
-      <Posts />
+      <div className="w-full">
+        <TodoList />
+        <Permissions />
+        <InventoryTable />
+        <Posts />
+        <StudentTable />
+      </div>
     </>
   );
 }
